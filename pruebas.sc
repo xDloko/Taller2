@@ -19,20 +19,23 @@ import Derivacion._
 // println(derivada(cte)(2))
 // println(derivada(cte)(6))
 
-println("\n\n Casos de perueba Derivacion:")
+
 val dev1=(x:Double) => (5*x+8)
 val dev2=(x:Double) => (5*x+8)*(5*x+8) //2(5*x+8)*5
 val dev3=(x:Double) => (-4*scala.math.pow(x, 4) + 3*x) //0
 val dev4=(x:Double) => (-4*scala.math.pow(x, 4) + 3*scala.math.pow(x, 2)) //0
 val dev5=(x:Double) => (scala.math.exp(x)) //0
 
-val devh1=derivada(dev1)
-val devh2=derivada(dev2)
-val devh3=derivada(dev3)
-val devh4=derivada(dev4)
-val devh5=derivada(dev5)
-println(devh1(2))
-println(devh2(2))
-println(devh3(0))
-println(devh4(0))
-println(devh5(10))
+println("\n\n Casos de perueba Derivacion:")
+println(derivada(dev1)(2))
+println(derivada(dev2)(2))
+println(derivada(dev3)(0))
+println(derivada(dev4)(0))
+println(derivada(dev5)(10))
+
+println("\n\n Casos de perueba Derivacion Suma:")
+println(derivadaSuma(dev1,dev2)(2))
+println(derivadaSuma(dev2,dev3)(0))
+println(derivadaSuma(dev3,dev4)(0))
+println(derivadaSuma(dev5,dev1)(10))
+println(derivadaSuma(dev4,dev5)(10))
