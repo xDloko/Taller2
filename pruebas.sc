@@ -21,10 +21,10 @@ import Derivacion._
 
 
 val dev1=(x:Double) => (5*x+8)
-val dev2=(x:Double) => (5*x+8)*(5*x+8) //2(5*x+8)*5
-val dev3=(x:Double) => (-4*scala.math.pow(x, 4) + 3*x) //0
-val dev4=(x:Double) => (-4*scala.math.pow(x, 4) + 3*scala.math.pow(x, 2)) //0
-val dev5=(x:Double) => (scala.math.exp(x)) //0
+val dev2=(x:Double) => (5*x+8)*(5*x+8) 
+val dev3=(x:Double) => (-4*scala.math.pow(x, 4) + 3*x) 
+val dev4=(x:Double) => (-4*scala.math.pow(x, 4) + 3*scala.math.pow(x, 2)) 
+val dev5=(x:Double) => (scala.math.exp(x)) 
 
 println("\n\n Casos de perueba Derivacion:")
 println(derivada(dev1)(2))
@@ -60,3 +60,51 @@ println(derivadaDiv(dev2,dev3)(0))
 println(derivadaDiv(dev3,dev4)(0))
 println(derivadaDiv(dev5,dev1)(10))
 println(derivadaDiv(dev4,dev5)(10))
+ 
+println("\n\n Casos de perueba IA:")
+
+val cte    = (x: Double) => 5.0
+val id     = (x: Double) => x
+val cuad   = (x: Double) => x * x
+val cubo   = (x: Double) => x * x * x
+val cuart  = (x: Double) => math.pow(x, 4)
+val seno   = (x: Double) => math.sin(x)
+val coseno = (x: Double) => math.cos(x)
+val exp    = (x: Double) => math.exp(x)
+val ln     = (x: Double) => math.log(x)
+
+println("=== 1. derivada ===")
+println(derivada(cte)(3.0))
+println(derivada(cuad)(-2.0))
+println(derivada(cuart)(2.0))
+println(derivada(seno)(0.0))
+println(derivada(exp)(1.0))
+
+println("=== 2. derivadaSuma ===")
+println(derivadaSuma(id, cte)(4.0))
+println(derivadaSuma(cuad, cubo)(2.0))
+println(derivadaSuma(cuad, (x: Double) => -x * x)(5.0))
+println(derivadaSuma(seno, coseno)(0.0))
+println(derivadaSuma(exp, ln)(1.0))
+
+println("=== 3. derivadaResta ===")
+println(derivadaResta(cubo, cubo)(3.0))
+println(derivadaResta(cubo, cuad)(1.0))
+println(derivadaResta(cte, cuad)(3.0))
+println(derivadaResta(seno, coseno)(math.Pi / 2))
+println(derivadaResta(exp, id)(0.0))
+
+println("=== 4. derivadaMult ===")
+println(derivadaMult(cte, cuad)(3.0))
+println(derivadaMult(id, cuad)(2.0))
+println(derivadaMult(seno, coseno)(0.0))
+println(derivadaMult(exp, id)(1.0))
+println(derivadaMult((x: Double) => x - 2, (x: Double) => x + 2)(2.0))
+
+println("=== 5. derivadaDiv ===")
+println(derivadaDiv(cuad, cte)(5.0))
+println(derivadaDiv((x: Double) => 1.0, id)(2.0))
+println(derivadaDiv(cubo, id)(3.0))
+println(derivadaDiv(seno, coseno)(0.0))
+println(derivadaDiv(exp, exp)(2.0))
+
